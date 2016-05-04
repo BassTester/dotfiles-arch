@@ -1,0 +1,38 @@
+#!/bin/bash
+
+res=$(echo "1:Htop|2:Ping|3:Wifi|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
+
+if [ $res = "1:Htop" ]; then
+  terminator --command "Htop"
+fi
+if [ $res = "2:Ping" ]; then
+  terminator --command "ping 8.8.8.8"
+fi
+if [ $res = "3:Wifi" ]; then
+  nm-applet
+fi
+if [ $res = "4:Mount_Data" ]; then
+  terminator --command "gksudo mount /dev/sdb2 ~/External/Data"
+  notify-send "Data " "Mounted"
+fi
+if [ $res = "5:Mount_Backup" ]; then
+  gksudo mount /dev/sdb1 ~/External/Backup
+  notify-send "Backup " "Mounted"
+fi
+if [ $res = "6:Mount_Virtualbox" ]; then
+  gksudo mount /dev/sdb3 ~/External/Virtualbox
+  notify-send "Virtualbox " "Mounted"
+fi
+if [ $res = "7:UMount_Data" ]; then
+  gksudo umount  ~/External/Data
+  notify-send "Data " "Unmounted"
+fi
+if [ $res = "8:UMount_Backup" ]; then
+  gksudo umount ~/External/Backup
+  notify-send "Backup " "Unmounted"
+fi
+if [ $res = "9:UMount_Virtualbox" ]; then
+  gksudo umount ~/External/Virtualbox
+  notify-send "Virtualbox " "Unmounted"
+fi
+exit 0
