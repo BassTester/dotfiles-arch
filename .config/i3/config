@@ -84,7 +84,7 @@ bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu 
 bind Mod4+118 exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/'
 
 ##power menu //rofi
-bind 124+Mod4 exec ~/.scripts/rofi/rofipowermenu
+bindcode 124 exec ~/.scripts/rofi/rofipowermenu
 
 ##launcher tools //rofi
 bindsym Mod4+Shift+t exec ~/.scripts/rofi/toolsmenu
