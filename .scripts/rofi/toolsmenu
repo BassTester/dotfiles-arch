@@ -3,16 +3,16 @@
 res=$(echo "1:Htop|2:Ping|3:Wifi|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
 
 if [ $res = "1:Htop" ]; then
-  terminator --command "Htop"
+  xterm -e "htop"
 fi
 if [ $res = "2:Ping" ]; then
-  terminator --command "ping 8.8.8.8"
+  xterm -e "ping 8.8.8.8"
 fi
 if [ $res = "3:Wifi" ]; then
   nm-applet
 fi
 if [ $res = "4:Mount_Data" ]; then
-  terminator --command "gksudo mount /dev/sdb2 ~/External/Data"
+  xterm -e "gksudo mount /dev/sdb2 ~/External/Data"
   notify-send "Data " "Mounted"
 fi
 if [ $res = "5:Mount_Backup" ]; then

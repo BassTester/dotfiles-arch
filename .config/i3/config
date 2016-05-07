@@ -105,7 +105,7 @@ bindsym Mod1+Tab \
   -bg        "#222222"  -fg        "#2ECC71" \
   -hlbg      "#2ECC71"  -hlfg      "#222222" \
   -bg-active "#222222"  -fg-active "#2288DD" \
-  -font      "Hack Regular 12"   -opactiy 80 -auto-select
+  -font      "decsess.pcf 12"   -opactiy 80 -auto-select
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -144,7 +144,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-font pango:FontAwesome 9.5
+font pango:decsess.pcf,FontAwesome 10.5
 
 
 #########
@@ -164,10 +164,9 @@ bar {
  height 20
  #i3bar_command i3bar -t
  ############
- font pango:Hack, FontAwesome 10.5
+ font pango:decsess.pcf, FontAwesome 10
  strip_workspace_numbers yes
  colors {
-
    #statusline #7f8c8d
    statusline $fgr
    background $bgr
@@ -190,7 +189,7 @@ client.urgent           #E6EFF6 #E6EFF6 $ff0000 $focus
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec terminator
+bindsym Mod4+Return exec xterm
 
 # kill focused window
 bindsym Mod4+Shift+q kill
