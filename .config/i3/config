@@ -90,8 +90,7 @@ bindcode 124 exec ~/.scripts/rofi/rofipowermenu
 bindsym Mod4+Shift+t exec ~/.scripts/rofi/toolsmenu
 
 ##launcher programs //rofi
-bindsym Mod4+Shift+p exec ~/.scripts/rofi/programsmenu
-
+bindsym Mod4+Shift+w exec ~/.scripts/rofi/programsmenu
 ##lockscreen
 bindsym Mod4+Shift+l exec i3lock -bc 000000
 
@@ -148,14 +147,13 @@ font pango:decsess.pcf,FontAwesome 10.5
 
 
 #########
-set $bgr #E6EFF6
-set $fgr #313C40
-set $lightfgr #9a9a9a
-set $focus #000000
+set $bgr #252525
+set $fgr #ffffff
+set $lightfgr #7a7a7a
+set $focus #ffffff
 set $red #ff0000
 #########
 bar {
- #status_command i3status
  status_command i3blocks
  position top
  #tray_output none
@@ -179,9 +177,9 @@ bar {
 }
 ########################################################
 #colors:                border  backgr. text    indicator
-client.focused          #E6EFF6 #E6EFF6 $000000 $focus
-client.focused_inactive #E6EFF6 #E6EFF6 #313C40 $000000
-client.unfocused        #E6EFF6 #E6EFF6 $lightfgr $lightfgr
+client.focused          $bgr $bgr $fgr $focus
+client.focused_inactive $bgr $bgr $fgr $focus
+client.unfocused        $bgr $bgr $lightfgr $lightfgr
 client.urgent           #E6EFF6 #E6EFF6 $ff0000 $focus
 ########################################################
 

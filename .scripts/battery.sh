@@ -43,7 +43,7 @@ print "$short_text\n";
 
 # consider color and urgent flag only on discharge
 if ($status eq 'Discharging') {
-	if ($percent < 5) {
+	if ($percent < 15) {
 		exit(33);
 	}
 }

@@ -1,7 +1,7 @@
 rofi.location:          0
 rofi.color-enabled:     true
 !                       'background', 'border'
-rofi.color-window:      argb:cc333333, argb:cc333333
+rofi.color-window:      argb:cc111111, argb:cc111111
 ! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
 rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
 rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
@@ -38,5 +38,9 @@ rofi.font:              decsess.pcf 12
 *xterm*color13: #bb88dd
 *xterm*color14: #4eb4fa
 *xterm*color15: #d0d0d0
-*xterm*faceName: descess.pcf:size=11:antialias=true
+*xterm*faceName: descess.pcf:size=10:antialias=true
 *xterm*font: 7x13
+
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
