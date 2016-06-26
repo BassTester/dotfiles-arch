@@ -1,7 +1,9 @@
 #!/bin/bash
 
-res=$(echo "1:Htop|2:Ping|3:Wifi|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
-
+res=$(echo "0:Pavucontrol|1:Htop|2:Ping|3:Wifi|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
+if [ $res = "0:Pavucontrol" ]; then
+  pavucontrol
+fi
 if [ $res = "1:Htop" ]; then
   xterm -e "htop"
 fi

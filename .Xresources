@@ -1,7 +1,7 @@
 rofi.location:          0
 rofi.color-enabled:     true
 !                       'background', 'border'
-rofi.color-window:      argb:cc111111, argb:cc111111
+rofi.color-window:      argb:dc111111, argb:dc111111
 ! State:                'bg',          'fg',   'bgalt',       'hlbg',        'hlfg'
 rofi.color-normal:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
 rofi.color-urgent:      argb:00333333, #ffffff, argb:00333333, argb:00333333, argb:ffefa211
@@ -16,7 +16,7 @@ rofi.yoffset:           0
 rofi.xoffset:           0
 rofi.width:             1366
 rofi.opacity:           90
-rofi.font:              decsess.pcf 12
+rofi.font:              Roboto-Regular.ttf 12
 
 ! Molokai theme
 *xterm*background: #101010
@@ -38,8 +38,7 @@ rofi.font:              decsess.pcf 12
 *xterm*color13: #bb88dd
 *xterm*color14: #4eb4fa
 *xterm*color15: #d0d0d0
-*xterm*faceName: descess.pcf:size=10:antialias=true
-*xterm*font: 7x13
+*xterm*faceName: Monofett.ttf:size=10:antialias=true
 
 xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\

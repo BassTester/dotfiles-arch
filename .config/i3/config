@@ -11,7 +11,7 @@
 #####################################################
 set $workspace1 "1:"
 set $workspace2 "2:"
-set $workspace3 "3:"
+set $workspace3 "3:"
 set $workspace4 "4:"
 set $workspace5 "5:"
 set $workspace6 "6:"
@@ -38,8 +38,8 @@ assign [title="Messenger"] → $workspace2
 assign [title="Steam"] → $workspace6
     for_window [title="Steam"] border none
 
-assign [class="Firefox"] → $workspace3
-	for_window [class="Firefox"] border none
+assign [class="Opera beta"] → $workspace3
+	for_window [class="Opera beta"] border none
 
 for_window [class="Thunar"] move to workspace $workspace4
 for_window [class="Spotify"] move to workspace $workspace10
@@ -104,7 +104,7 @@ bindsym Mod1+Tab \
   -bg        "#222222"  -fg        "#2ECC71" \
   -hlbg      "#2ECC71"  -hlfg      "#222222" \
   -bg-active "#222222"  -fg-active "#2288DD" \
-  -font      "decsess.pcf 12"   -opactiy 80 -auto-select
+  -font      "Monofett.ttf 12"   -opactiy 80 -auto-select
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -143,7 +143,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-font pango:decsess.pcf,FontAwesome 10.5
+font pango:Monofett.ttf 10.5
 
 
 #########
@@ -162,7 +162,7 @@ bar {
  height 20
  #i3bar_command i3bar -t
  ############
- font pango:decsess.pcf, FontAwesome 10
+ font pango:Monofett.ttf 10
  strip_workspace_numbers yes
  colors {
    #statusline #7f8c8d
@@ -300,3 +300,38 @@ mode "resize" {
 }
 
 bindsym Mod4+r mode "resize"
+
+#cycle workspace through displays
+bindcode $mod+135 move workspace to output left
+
+# monitors
+set $mon_lap LVDS1
+set $mon_ext VGA1
+set $mon_ext1 HDMI1
+set $mon_ext2 HDMI2
+
+bind Mod4+9 mode "monitor_select"
+
+mode "monitor_select" {
+
+  # only one
+  bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off; mode "default"
+
+  # left and right
+  bindsym l exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --left-of $mon_lap ; mode "default"
+  bindsym r exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --right-of $mon_lap ; mode "default"
+
+  # up and down
+  bindsym u exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --above $mon_lap ; mode "default"
+  bindsym d exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --below $mon_lap ; mode "default"
+
+  # clone
+  bindsym c exec --no-startup-id xrandr --output $mon_lap --auto -R-output $mon_ext --auto --same-as $mon_lap ; mode "default"
+
+  # presentation
+  bindsym p exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --left-of $mon_lap ; mode "default"
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}

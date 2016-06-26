@@ -1,13 +1,13 @@
 #!/bin/bash
 
-res=$(echo "2:Messenger|3:Firefox|4:Thunar|5:Atom|6:Steam|9:Thunderbird|0:Spotify" |
+res=$(echo "2:Messenger|3:Opera|4:Thunar|5:Atom|6:Steam|9:Thunderbird|0:Spotify" |
 rofi -sep "|" -dmenu -i -p 'Programy ' "" -auto-select)
 
 if [ $res = "5:Atom" ]; then
   atom
 fi
-if [ $res = "3:Firefox" ]; then
-  firefox
+if [ $res = "3:Opera" ]; then
+  opera-beta
 fi
 if [ $res = "4:Thunar" ]; then
   thunar
