@@ -147,9 +147,9 @@ font pango:Monofett.ttf 10.5
 
 
 #########
-set $bgr #252525
-set $fgr #ffffff
-set $lightfgr #7a7a7a
+set $bgr #25252500
+set $fgr #000f0f
+set $lightfgr #252525
 set $focus #ffffff
 set $red #ff0000
 #########
@@ -160,7 +160,7 @@ bar {
  ############
  ##i3-gaps
  height 20
- #i3bar_command i3bar -t
+ i3bar_command i3bar -t
  ############
  font pango:Monofett.ttf 10
  strip_workspace_numbers yes
@@ -191,7 +191,8 @@ bindsym Mod4+Return exec xterm
 
 # kill focused window
 bindsym Mod4+Shift+q kill
-# kill focused window
+
+# kill focused window alt+f4
 bind mod1+70 kill
 
 
@@ -310,9 +311,13 @@ set $mon_ext VGA1
 set $mon_ext1 HDMI1
 set $mon_ext2 HDMI2
 
-bind Mod4+9 mode "monitor_select"
 
-mode "monitor_select" {
+
+bindsym $mod+o mode "$mode_launcher"
+set $monitor_select Monitor: [1] [l]eft [r]ight [u]p [d]own [c]lone
+
+bind Mod4+9 mode $monitor_select
+mode "$monitor_select" {
 
   # only one
   bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off; mode "default"
