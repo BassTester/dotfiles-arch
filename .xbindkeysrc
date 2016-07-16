@@ -1,0 +1,28 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+
+# Increase volume
+"amixer -D pulse sset Master 5%+ | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show && pkill -RTMIN+1 i3blocks"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"amixer -D pulse sset Master 5%- | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show && pkill -RTMIN+1 i3blocks"
+    XF86AudioLowerVolume
+
+# Toggle volume
+"amixer -D pulse set Master 1+ toggle; if [[ -n $(amixer get volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg Master | grep 'Front Left:' | grep -o "\[off\]") ]] ; then volnoti-show -m -v; else amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show; fi && pkill -RTMIN+1 i3blocks"
+  XF86AudioMute
+
+# Brightness up
+"xbacklight -inc 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc)"
+XF86MonBrightnessUp
+
+# Brightness down
+"xbacklight -dec 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc)"
+XF86MonBrightnessDown
+
+##################################
+# End of xbindkeys configuration #
+##################################

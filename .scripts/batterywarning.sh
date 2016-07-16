@@ -11,6 +11,7 @@ if [ -z $status ]; then
   if [ $(( 100 * $bn / $bf )) -lt 5 ]; then
     notify-send "Shutting down in 60 sec"
     sleep 60
+    echo "shutting down" >> /home/maciej/batterylog
     systemctl poweroff
   else
     if [ $(( 100 * $bn / $bf )) -lt 8 ]; then

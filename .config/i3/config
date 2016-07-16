@@ -23,11 +23,11 @@ set $mod Mod4
 ############################
 ##i3-gaps specific settings#
 ############################
-gaps inner 5
+gaps inner 3
 gaps outer 0
 smart_gaps on
 smart_borders on
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 #########################
 
 
@@ -64,19 +64,17 @@ exec --no-startup-id dropbox start
 exec --no-startup-id nitrogen --restore
 ##compton in daemon mode
 exec --no-startup-id compton -b
-##redshift
-exec --no-startup-id redshift
-
+##nm-applet
+exec --no-startup-id nm-applet
+##xbindkeys
+exec --no-startup-id xbindkeys
 
 ##backlight and volume
-bindcode 232 exec xbacklight -dec 10, exec pkill -RTMIN+5 i3blocks
-bindcode 233 exec xbacklight -inc 10, exec pkill -RTMIN+5 i3blocks
+#bindcode 232 exec xbacklight -dec 10, exec pkill -RTMIN+5 i3blocks
+#bindcode 233 exec xbacklight -inc 10, exec pkill -RTMIN+5 i3blocks
 bind Mod4+34 exec playerctl previous
 bind Mod4+35 exec playerctl play-pause
 bind Mod4+51 exec playerctl next
-bindcode 121 exec amixer -D pulse set Master 1+ toggle , exec pkill -RTMIN+1 i3blocks
-bindcode 122 exec amixer -D pulse sset Master 5%- , exec pkill -RTMIN+1 i3blocks
-bindcode 123 exec amixer -D pulse sset Master 5%+ , exec pkill -RTMIN+1 i3blocks
 
 ##dmenu
 bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -fullscreen -bg "#FFFFFF" -fg "#FFFFFF" -hlbg "#FFFFFF" -hlfg "#FFFFFF" -opacity 100 -m 0 -location 2'
@@ -149,14 +147,13 @@ font pango:Monofett.ttf 10.5
 #########
 set $bgr #25252500
 set $fgr #000f0f
-set $lightfgr #252525
-set $focus #ffffff
+set $lightfgr #797979
+set $focus #000000
 set $red #ff0000
 #########
 bar {
  status_command i3blocks
  position top
- #tray_output none
  ############
  ##i3-gaps
  height 20
@@ -202,7 +199,6 @@ bindsym Mod4+$down focus down
 bindsym Mod4+$up focus up
 bindsym Mod4+$right focus right
 
-# alternatively, you can use the cursor keys:
 bindsym Mod4+Left focus left
 bindsym Mod4+Down focus down
 bindsym Mod4+Up focus up
@@ -214,7 +210,6 @@ bindsym Mod4+Shift+$down move down
 bindsym Mod4+Shift+$up move up
 bindsym Mod4+Shift+$right move right
 
-# alternatively, you can use the cursor keys:
 bindsym Mod4+Shift+Left move left
 bindsym Mod4+Shift+Down move down
 bindsym Mod4+Shift+Up move up

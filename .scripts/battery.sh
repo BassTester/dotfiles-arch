@@ -20,10 +20,10 @@ close(ACPI);
 if ($acpi !~ /: (\w+), (\d+)%/) {
 	die "$acpi\n";
 }
-
 $status = $1;
 $percent = $2;
 $full_text = "$percent%";
+system("echo $full_text >> /home/maciej/batterylog");
 
 if ($status eq 'Discharging') {
 	$full_text .= '';
@@ -42,10 +42,5 @@ print "$full_text\n";
 print "$short_text\n";
 
 # consider color and urgent flag only on discharge
-if ($status eq 'Discharging') {
-	if ($percent < 15) {
-		exit(33);
-	}
-}
 
 exit(0);
