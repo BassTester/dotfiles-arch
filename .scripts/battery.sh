@@ -1,46 +1,68 @@
-#!/usr/bin/perl
+#!/usr/bin/env python3
+#
+# Copyright (C) 2016 James Murphy
+# Licensed under the GPL version 2 only
+#
+# A battery indicator blocklet script for i3blocks
 
-use strict;
-use warnings;
-use utf8;
+from subprocess import check_output
 
-my $acpi;
-my $status;
-my $percent;
-my $full_text;
-my $short_text;
-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+status = check_output(['acpi'], universal_newlines=True)
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
+if not status:
+    # stands for no battery found
+    fulltext = "<span color='red'><span font='FontAwesome'>\uf00d \uf240</span></span>"
+    percentleft = 100
+else:
+    state = status.split(": ")[1].split(", ")[0]
+    commasplitstatus = status.split(", ")
+    percentleft = int(commasplitstatus[1].rstrip("%\n"))
 
-# fail on unexpected output
-if ($acpi !~ /: (\w+), (\d+)%/) {
-	die "$acpi\n";
-}
-$status = $1;
-$percent = $2;
-$full_text = "$percent%";
-system("echo $full_text >> /home/maciej/batterylog");
+    # stands for charging
+    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
 
-if ($status eq 'Discharging') {
-	$full_text .= '';
-} elsif ($status eq 'Charging') {
-	$full_text .= ' ';
-}
+    # stands for plugged in
+    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
 
-$short_text = $full_text;
+    fulltext = ""
+    timeleft = ""
 
-if ($acpi =~ /(\d\d:\d\d):/) {
-	$full_text .= " $1";
-}
+    if state == "Discharging":
+        time = commasplitstatus[-1].split()[0]
+        time = ":".join(time.split(":")[0:2])
+        timeleft = " ({})".format(time)
+    elif state == "Full":
+        fulltext = FA_PLUG + " "
+    elif state == "Unknown":
+        fulltext = "<span font='FontAwesome'>\uf128</span> "
+    else:
+        fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
-# print text
-print "$full_text\n";
-print "$short_text\n";
+    def color(percent):
+        if percent < 10:
+            # exit code 33 will turn background red
+            return "#FFFFFF"
+        if percent < 20:
+            return "#FF3300"
+        if percent < 30:
+            return "#FF6600"
+        if percent < 40:
+            return "#FF9900"
+        if percent < 50:
+            return "#FFCC00"
+        if percent < 60:
+            return "#FFFF00"
+        if percent < 70:
+            return "#FFFF33"
+        if percent < 80:
+            return "#FFFF66"
+        return "#000000"
 
-# consider color and urgent flag only on discharge
+    form =  '<span color="{}">{}%</span>'
+    fulltext += form.format(color(percentleft), percentleft)
+    fulltext += timeleft
 
-exit(0);
+print(fulltext)
+print(fulltext)
+if percentleft < 10:
+    exit(33)

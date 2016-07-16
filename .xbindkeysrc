@@ -16,12 +16,19 @@
   XF86AudioMute
 
 # Brightness up
-"xbacklight -inc 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc)"
+"xbacklight -inc 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc) && pkill -RTMIN+17 i3blocks"
 XF86MonBrightnessUp
 
 # Brightness down
-"xbacklight -dec 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc)"
+"xbacklight -dec 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc) && pkill -RTMIN+17 i3blocks"
 XF86MonBrightnessDown
+
+# Display current battery
+"volnoti-show -s /usr/share/pixmaps/volnoti/battery.svg $(acpi | grep -o "[0-9]*%" | grep -o "[0-9]*")"
+XF86Battery
+
+
+
 
 ##################################
 # End of xbindkeys configuration #

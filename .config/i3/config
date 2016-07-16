@@ -68,10 +68,10 @@ exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 ##xbindkeys
 exec --no-startup-id xbindkeys
+##volnoti
+exec --no-startup-id volnoti
 
 ##backlight and volume
-#bindcode 232 exec xbacklight -dec 10, exec pkill -RTMIN+5 i3blocks
-#bindcode 233 exec xbacklight -inc 10, exec pkill -RTMIN+5 i3blocks
 bind Mod4+34 exec playerctl previous
 bind Mod4+35 exec playerctl play-pause
 bind Mod4+51 exec playerctl next
