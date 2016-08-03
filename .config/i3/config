@@ -23,7 +23,7 @@ set $mod Mod4
 ############################
 ##i3-gaps specific settings#
 ############################
-gaps inner 3
+gaps inner 15
 gaps outer 0
 smart_gaps on
 smart_borders on
@@ -53,9 +53,17 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
-
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+
+###"Peek" at previous workspace###
+#needed for disabling caps lock
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id xset -r 66
+bindcode 66 workspace back_and_forth
+bindcode --release 66 workspace back_and_forth
+########
+
 
 ##AUTOSTART###
 ##dropbox
@@ -77,7 +85,7 @@ bind Mod4+35 exec playerctl play-pause
 bind Mod4+51 exec playerctl next
 
 ##dmenu
-bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -fullscreen -bg "#FFFFFF" -fg "#FFFFFF" -hlbg "#FFFFFF" -hlfg "#FFFFFF" -opacity 100 -m 0 -location 2'
+bindsym Mod4+Shift+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
 ##screenshot
 bind Mod4+118 exec --no-startup-id scrot -e 'mv $f ~/Pictures/Screenshots/'
 
@@ -89,6 +97,7 @@ bindsym Mod4+Shift+t exec ~/.scripts/rofi/toolsmenu
 
 ##launcher programs //rofi
 bindsym Mod4+Shift+w exec ~/.scripts/rofi/programsmenu
+
 ##lockscreen
 bindsym Mod4+Shift+l exec i3lock -bc 000000
 
@@ -143,35 +152,36 @@ mode "$mode_gaps_outer" {
 
 font pango:Monofett.ttf 10.5
 
-
 #########
-set $bgr #25252500
-set $fgr #000f0f
-set $lightfgr #797979
-set $focus #000000
-set $red #ff0000
+set $bgr #263238
+set $fgr #CFD8DC
+set $lightfgr #607D8B
+set $focus #90A4AE
+set $red #ff4136
 #########
 bar {
- status_command i3blocks
- position top
- ############
- ##i3-gaps
- height 20
- i3bar_command i3bar -t
- ############
- font pango:Monofett.ttf 10
- strip_workspace_numbers yes
- colors {
+  ############
+  ##i3-gaps
+  height 17
+  #i3bar_command i3bar -t
+  ############
+  status_command i3blocks
+  position top
+
+  font pango:Monofett.ttf 8
+  strip_workspace_numbers yes
+  colors {
    #statusline #7f8c8d
    statusline $fgr
    background $bgr
    separator #002b36
-	 ##what <border> <background> <text>
-	 focused_workspace $bgr $bgr 	$focus
-	 inactive_workspace $bgr $bgr $lightfgr
+   ##what <border> <background> <text>
+   focused_workspace $bgr $bgr 	$focus
+   inactive_workspace $bgr $bgr $fgr
    urgent_workspace $bgr $bgr $red
- }
+   }
 }
+
 ########################################################
 #colors:                border  backgr. text    indicator
 client.focused          $bgr $bgr $fgr $focus

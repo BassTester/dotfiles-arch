@@ -3,8 +3,9 @@
   export SVN_EDITOR=nano
   eval $(thefuck --alias)
   export EDITOR=$(which nano)
- alias reloadxresources="xrdb -merge ~/.Xresources"
- alias online="curl -F 'sprunge=<-' http://sprunge.us | xclip -selection c" 
+  alias i3c="atom ~/.config/i3/config"
+  alias reloadxresources="xrdb -merge ~/.Xresources"
+  alias online="curl -F 'sprunge=<-' http://sprunge.us | xclip -selection c"
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -12,7 +13,7 @@
 #ZSH_THEME="bira"
 #ZSH_THEME="amuse"
 ZSH_THEME="ys"
-#DEFAULT_USER="maciej"
+DEFAULT_USER="maciej"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

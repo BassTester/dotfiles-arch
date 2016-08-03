@@ -39,30 +39,10 @@ else:
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
     def color(percent):
-        if percent < 10:
-            # exit code 33 will turn background red
-            return "#FFFFFF"
-        if percent < 20:
-            return "#FF3300"
-        if percent < 30:
-            return "#FF6600"
-        if percent < 40:
-            return "#FF9900"
-        if percent < 50:
-            return "#FFCC00"
-        if percent < 60:
-            return "#FFFF00"
-        if percent < 70:
-            return "#FFFF33"
-        if percent < 80:
-            return "#FFFF66"
         return "#000000"
 
-    form =  '<span color="{}">{}%</span>'
-    fulltext += form.format(color(percentleft), percentleft)
+    form =  '<span >{}%</span>'
+    fulltext += form.format(percentleft)
     fulltext += timeleft
 
 print(fulltext)
-print(fulltext)
-if percentleft < 10:
-    exit(33)
