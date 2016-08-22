@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "2:Messenger|3:Opera|4:Thunar|5:Atom|6:Steam|9:Thunderbird|0:Spotify" |
+res=$(echo "2:Messenger|3:Opera|4:Thunar|5:Atom|6:Steam|9:Evolution|0:Spotify" |
 rofi -sep "|" -dmenu -i -p 'Programy ' "" -auto-select)
 
 if [ $res = "5:Atom" ]; then
@@ -21,7 +21,7 @@ fi
 if [ $res = "6:Steam" ]; then
     LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' steam
 fi
-if [ $res = "9:Thunderbird" ]; then
-    thunderbird
+if [ $res = "9:Evolution" ]; then
+    evolution
 fi
 exit 0
