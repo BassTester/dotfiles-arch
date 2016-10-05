@@ -6,6 +6,16 @@
   alias i3c="atom ~/.config/i3/config"
   alias reloadxresources="xrdb -merge ~/.Xresources"
   alias online="curl -F 'sprunge=<-' http://sprunge.us | xclip -selection c"
+  
+  function cd(){ cd "$@" && ls -h --color=auto }
+
+  function cp() {
+  if [ ! -d "$2" ]; then
+      mkdir -p "$2"
+  fi
+  cp -R "$1" "$2"
+}
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

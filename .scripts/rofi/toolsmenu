@@ -14,7 +14,7 @@ if [ $res = "3:Wifi" ]; then
   nm-applet
 fi
 if [ $res = "4:Mount_Data" ]; then
-  xterm -e "gksudo mount /dev/sdb2 ~/External/Data"
+  gksudo mount /dev/sdb2 ~/External/Data
   notify-send "Data " "Mounted"
 fi
 if [ $res = "5:Mount_Backup" ]; then
