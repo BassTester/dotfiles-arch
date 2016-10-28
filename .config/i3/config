@@ -157,10 +157,10 @@ mode "$mode_gaps_outer" {
 font pango:SourceCodePro-Regular 10.5
 
 #########
-set $bgr #263238
-set $fgr #CFD8DC
-set $lightfgr #607D8B
-set $focus #90A4AE
+set $bgr #2E2F44
+set $fgr #3fa8ad
+set $lightfgr #39969B
+set $focus #FF4F51
 set $red #ff4136
 #########
 bar {
