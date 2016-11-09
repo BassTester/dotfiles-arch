@@ -16,11 +16,11 @@
    XF86AudioMute
 
 # Brightness up
-"xbacklight -inc 5 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc) && pkill -RTMIN+17 i3blocks"
+"xbacklight -inc 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) && pkill -RTMIN+17 i3blocks"
 XF86MonBrightnessUp
 
 # Brightness down
-"xbacklight -dec 5 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(echo "`xrandr --verbose | grep -m 1 -i backlight | cut -f2 -d ' '` * 100 / 20" | bc) && pkill -RTMIN+17 i3blocks"
+"xbacklight -dec 10 && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) && pkill -RTMIN+17 i3blocks"
 XF86MonBrightnessDown
 
 # Display current battery

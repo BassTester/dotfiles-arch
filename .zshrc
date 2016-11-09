@@ -3,10 +3,13 @@
   export SVN_EDITOR=nano
   eval $(thefuck --alias)
   export EDITOR=$(which nano)
+  alias cls="clear"
   alias i3c="atom ~/.config/i3/config"
   alias reloadxresources="xrdb -merge ~/.Xresources"
   alias online="curl -F 'sprunge=<-' http://sprunge.us | xclip -selection c"
-  
+  alias upgrade="pacaur -Syu"
+  alias fupgrade="upgrade --noconfirm --noedit"  
+
   function c(){ cd "$@" && ls -h --color=auto }
 
   function cp() {

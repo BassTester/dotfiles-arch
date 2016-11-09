@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(echo "0:Pavucontrol|1:Htop|2:Ping|3:Wifi|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
+res=$(echo "0:Pavucontrol|1:Htop|2:Ping|3:Arandr|4:Mount_Data|5:Mount_Backup|6:Mount_Virtualbox|7:UMount_Data|8:UMount_Backup|9:UMount_Virtualbox" | rofi -sep "|" -dmenu -i -p 'Narzędzia ' "" -auto-select)
 if [ $res = "0:Pavucontrol" ]; then
   pavucontrol
 fi
@@ -10,8 +10,8 @@ fi
 if [ $res = "2:Ping" ]; then
   xterm -e "ping 8.8.8.8"
 fi
-if [ $res = "3:Wifi" ]; then
-  nm-applet
+if [ $res = "3:Arandr" ]; then
+  arandr
 fi
 if [ $res = "4:Mount_Data" ]; then
   gksudo mount /dev/sdb2 ~/External/Data

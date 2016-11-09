@@ -154,13 +154,13 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-font pango:SourceCodePro-Regular 10.5
+font pango: Sans Regular 11
 
 #########
-set $bgr #2E2F44
-set $fgr #3fa8ad
-set $lightfgr #39969B
-set $focus #FF4F51
+set $bgr #fdb100
+set $fgr #272c2c
+set $lightfgr #c08c0e
+set $focus #ffffff
 set $red #ff4136
 #########
 bar {
@@ -172,7 +172,7 @@ bar {
   status_command i3blocks
   position top
 
-  font pango:SourceCodePro-Regular 8
+  font pango:Sans Regular 8.5
   strip_workspace_numbers yes
   colors {
    #statusline #7f8c8d
@@ -191,7 +191,7 @@ bar {
 client.focused          $bgr $bgr $fgr $focus
 client.focused_inactive $bgr $bgr $fgr $focus
 client.unfocused        $bgr $bgr $lightfgr $lightfgr
-client.urgent           #E6EFF6 #E6EFF6 $ff0000 $focus
+client.urgent           #E6EFF6 $focus $ff0000 $FFFFFF
 ########################################################
 
 # use Mouse+Mod4 to drag floating windows to their wanted position
@@ -313,39 +313,3 @@ bindsym Mod4+r mode "resize"
 
 #cycle workspace through displays
 bindcode $mod+135 move workspace to output left
-
-# monitors
-set $mon_lap LVDS1
-set $mon_ext VGA1
-set $mon_ext1 HDMI1
-set $mon_ext2 HDMI2
-
-
-
-bindsym $mod+o mode "$mode_launcher"
-set $monitor_select Monitor: [1] [l]eft [r]ight [u]p [d]own [c]lone
-
-bind Mod4+9 mode $monitor_select
-mode "$monitor_select" {
-
-  # only one
-  bindsym 1 exec --no-startup-id xrandr --output $mon_ext --off; mode "default"
-
-  # left and right
-  bindsym l exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --left-of $mon_lap ; mode "default"
-  bindsym r exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --right-of $mon_lap ; mode "default"
-
-  # up and down
-  bindsym u exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --above $mon_lap ; mode "default"
-  bindsym d exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --below $mon_lap ; mode "default"
-
-  # clone
-  bindsym c exec --no-startup-id xrandr --output $mon_lap --auto -R-output $mon_ext --auto --same-as $mon_lap ; mode "default"
-
-  # presentation
-  bindsym p exec --no-startup-id xrandr --output $mon_lap --auto --output $mon_ext --auto --left-of $mon_lap ; mode "default"
-
-  # back to normal: Enter or Escape
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
