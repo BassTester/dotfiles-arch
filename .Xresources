@@ -58,7 +58,7 @@ rofi.font:              SourceCodePro-Regular 12
 *color7:                              #DDDDA9
 *color15:                             #DBDAC1
 
-*xterm*faceName: SourceCodePro-Regular:size=10:antialias=true
+*xterm*faceName: SourceCodeProForPowerline-Regular:size=10:antialias=true
 
 xterm*VT100.Translations: #override \
                  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
