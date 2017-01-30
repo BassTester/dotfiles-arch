@@ -1,10 +1,10 @@
 #!/bin/bash
 
-res=$(echo "2:Messenger|3:Chrome|4:Thunar|5:Atom|6:Steam|9:Evolution|0:Spotify" |
+res=$(echo "2:Messenger|3:Chrome|4:Thunar|5:Vim|6:Steam|9:WMail|0:Spotify" |
 rofi -sep "|" -dmenu -i -p 'Programy ' "" -auto-select)
 
-if [ $res = "5:Atom" ]; then
-  atom
+if [ $res = "5:Vim" ]; then
+  konsole -e vim
 fi
 if [ $res = "3:Chrome" ]; then
   google-chrome-unstable
@@ -13,7 +13,7 @@ if [ $res = "4:Thunar" ]; then
   thunar
 fi
 if [ $res = "2:Messenger" ]; then
-  messengerfordesktop
+  /opt/messengerfordesktop/messengerfordesktop
 fi
 if [ $res = "0:Spotify" ]; then
     spotify --force-device-scale-factor=1.0000001
@@ -21,7 +21,7 @@ fi
 if [ $res = "6:Steam" ]; then
     LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' steam
 fi
-if [ $res = "9:Evolution" ]; then
-    evolution
+if [ $res = "9:WMail" ]; then
+    wmail
 fi
 exit 0

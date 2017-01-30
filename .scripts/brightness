@@ -40,6 +40,4 @@ fi
 
 percent=${percent%.*}
 
-echo "${percent}%"
-echo "${percent}%"
-echo ""
+echo " ${percent}%"

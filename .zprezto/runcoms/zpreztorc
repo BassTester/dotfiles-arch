@@ -13,8 +13,7 @@
 # Aliases & others
 #
 alias cls="clear"
-alias i3c="atom ~/.config/i3/config"
-alias nterm="pwd | konsole &"
+alias i3c="vim ~/.config/i3/config"
 alias j="cd .."
 alias reloadxresources="xrdb -merge ~/.Xresources"
 alias online="curl -F 'sprunge=<-' http://sprunge.us | xclip -selection c"
@@ -24,7 +23,22 @@ alias ls='ls -hv --color=auto'
 alias ll='ls --group-directories-first -alF --sort=extension'
 alias l='ls --group-directories-first -lF --sort=extension'
 alias grep='grep -E --color=auto'
+alias ss='scrot2'
 
+
+
+function androidtestsign {
+    if ! [ -z $1 ]; then
+        jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android $1 androiddebugkey
+    else
+        echo "No apk"
+    fi
+}
+
+function scrot2()
+{
+	scrot -d 5 '%Y-%m-%d-%T_$wx$h.png' -e 'mv $f ~/Dropbox/PHOTOS/Screenshots && echo "$f zapisane w folderze ~/Dropbox/PHOTOS/Screenshots"'
+}
 
 function c()
 {
@@ -187,3 +201,23 @@ zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+#
+# if [ "$TERM" = "linux" ]; then
+#      echo -en "\e]P0000000" #black
+#           echo -en "\e]P8505354" #darkgrey
+#                echo -en "\e]P1f92672" #darkred
+#                     echo -en "\e]P9ff5995" #red
+#                          echo -en "\e]P282b414" #darkgreen
+#                               echo -en "\e]PAb6e354" #green
+#                                    echo -en "\e]P3fd971f" #brown
+#                                         echo -en "\e]PBfeed6c" #yellow
+#                                              echo -en "\e]P456c2d6" #darkblue
+#                                                   echo -en "\e]PC8cedff" #blue
+#                                                        echo -en "\e]P58c54fe" #darkmagenta
+#                                                             echo -en "\e]PD9e6ffe" #magenta
+#                                                                  echo -en "\e]P6465457" #darkcyan
+#                                                                       echo -en "\e]PE899ca1" #cyan
+#                                                                            echo -en "\e]P7ccccc6" #lightgrey
+#                                                                                 echo -en "\e]PFf8f8f2" #white
+#                                                                                      clear # back to default input colours
+#                                                                                      fi
